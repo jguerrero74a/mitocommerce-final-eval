@@ -13,4 +13,8 @@ export class CategoryService {
   getAll() {
     return this.httpClient.get<Category[]>(this.apiUrl);
   }
+
+  getFeatured() {
+    return this.httpClient.get<Category[]>(`${this.apiUrl}/featured`);
+  }
 }

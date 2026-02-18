@@ -36,7 +36,7 @@
               <span>Favoritos</span>
             </a>
             <button class="cr-right-bar-item Shopping-toggle">
-              <i class="ri-shopping-cart-line"></i>
+              <i class="ri-shopping-cart-line">{{ cartCount() }}</i>
               <span>Carrito</span>
             </button>
           </div>
@@ -48,7 +48,7 @@
     <div class="cr-container">
       <div class="cr-menu-list">
         <div class="cr-category-icon-block">
-          <div class="cr-category-menu">
+          <div class="cr-category-menu" (click)="openSidebar()">
             <div class="cr-category-toggle">
               <i class="ri-menu-2-line"></i>
             </div>

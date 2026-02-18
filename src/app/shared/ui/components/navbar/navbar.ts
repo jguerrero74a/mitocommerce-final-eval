@@ -1,7 +1,8 @@
-import { Category } from '@/app/modules/category/interfaces/category';
-import { CategoryService } from '@/app/modules/category/services/category.service';
-import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { SidebarService } from '../../services/sidebar.service';
+import { CategoriesFeaturedService } from '@/app/modules/category/services/categories-featured.service';
+import { Store } from '@ngrx/store';
+import { selectCartCount } from '@/app/store/cart/cart.selector';
 
 @Component({
   selector: 'app-navbar',
@@ -11,13 +12,14 @@ import { toSignal } from '@angular/core/rxjs-interop';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Navbar {
-  private categoryService = inject(CategoryService);
+  private sidebarService = inject(SidebarService);
+  private categoriesFeaturedService = inject(CategoriesFeaturedService);
+  categories = this.categoriesFeaturedService.categories;
 
-  categories = toSignal<Category[]>(this.categoryService.getAll());
+  store = inject(Store);
+  cartCount = this.store.selectSignal(selectCartCount);
 
-  constructor() {
-    effect(() => {
-      console.log(this.categories());
-    });
+  openSidebar() {
+    this.sidebarService.open();
   }
 }
