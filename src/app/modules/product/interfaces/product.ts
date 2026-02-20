@@ -1,8 +1,16 @@
 export interface Product {
   id: string;
   name?: string;
+  description?: string;
   price?: number;
-  quantity?: number;
+  stock?: number;
+  category?: string;
+  categoryId?: number;
   image?: string;
-  categoryId?: string;
+  discount?: number;
+  rating?: number;
+  featured?: boolean;
+  quantity?: number;
+  createdAt?: string;
+  updatedAt?: string;
 }

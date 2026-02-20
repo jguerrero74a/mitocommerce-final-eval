@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { SidebarService } from '../../services/sidebar.service';
+import { SidebarService } from '../../../services/sidebar.service';
 import { CategoriesFeaturedService } from '@/app/modules/category/services/categories-featured.service';
 
 @Component({

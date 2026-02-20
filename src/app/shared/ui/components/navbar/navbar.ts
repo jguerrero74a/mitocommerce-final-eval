@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { SidebarService } from '../../services/sidebar.service';
+import { SidebarService } from '../../../services/sidebar.service';
 import { CategoriesFeaturedService } from '@/app/modules/category/services/categories-featured.service';
 import { Store } from '@ngrx/store';
 import { selectCartCount } from '@/app/store/cart/cart.selector';
