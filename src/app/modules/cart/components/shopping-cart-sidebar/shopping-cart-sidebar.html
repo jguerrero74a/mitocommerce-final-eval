@@ -1,5 +1,11 @@
 @if (cartsidebarService.isOpen()) {
-  <div class="cr-cart-overlay" style="display: block"></div>
+  <div
+    class="cr-cart-overlay"
+    (click)="cartsidebarService.close()"
+    (keydown.enter)="cartsidebarService.close()"
+    (keydown.escape)="cartsidebarService.close()"
+    style="display: block"
+  ></div>
 
   <div class="cr-cart-view cr-cart-view-active">
     <div class="cr-cart-inner">
@@ -24,7 +30,7 @@
                 >
                 <div class="cr-cart-qty">
                   <div class="cart-qty-plus-minus">
-                    <button type="button" (click)="addQuantity()" class="qty-btn">+</button>
+                    <button type="button" (click)="addQuantity(product)" class="qty-btn">+</button>
                     <input
                       type="text"
                       placeholder="."
@@ -34,7 +40,9 @@
                       class="quantity"
                       [value]="product.quantity"
                     />
-                    <button type="button" (click)="restQuantity()" class="qty-btn">-</button>
+                    <button type="button" (click)="restQuantity(product.id)" class="qty-btn">
+                      -
+                    </button>
                   </div>
                 </div>
                 <a href="javascript:void(0)" class="remove">×</a>

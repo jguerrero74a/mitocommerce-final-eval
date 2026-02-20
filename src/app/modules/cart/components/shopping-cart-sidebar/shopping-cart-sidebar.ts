@@ -1,7 +1,9 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { CartsidebarService } from '../../services/cartsidebar-service';
 import { Store } from '@ngrx/store';
 import { Product } from '@/app/modules/product/interfaces/product';
+import { selectCartProducts, selectCartTotal } from '@/app/store/cart/cart.selector';
+import { CartActions } from '@/app/store/cart/cart.actions';
 
 @Component({
   selector: 'app-shopping-cart-sidebar',
@@ -12,12 +14,14 @@ import { Product } from '@/app/modules/product/interfaces/product';
 export class ShoppingCartSidebar {
   store = inject(Store);
   cartsidebarService = inject(CartsidebarService);
-  totalProducts = signal(0);
-  productsInCart = signal<Product[]>([]);
+  productsInCart = this.store.selectSignal(selectCartProducts);
+  totalProducts = this.store.selectSignal(selectCartTotal);
 
-  // clearCart() {}
+  addQuantity(product: Product) {
+    this.store.dispatch(CartActions.addProduct({ product }));
+  }
 
-  addQuantity() {}
-
-  restQuantity() {}
+  restQuantity(productId: string) {
+    this.store.dispatch(CartActions.removeProduct({ productId }));
+  }
 }

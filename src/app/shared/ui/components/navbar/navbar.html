@@ -35,8 +35,11 @@
               <i class="ri-heart-3-line"></i>
               <span>Favoritos</span>
             </a>
-            <button class="cr-right-bar-item Shopping-toggle">
-              <i class="ri-shopping-cart-line">{{ cartCount() }}</i>
+            <button
+              class="cr-right-bar-item Shopping-toggle cursor-pointer"
+              (click)="openCartSidebar()"
+            >
+              <i class="ri-shopping-cart-line"></i>
               <span>Carrito</span>
             </button>
           </div>

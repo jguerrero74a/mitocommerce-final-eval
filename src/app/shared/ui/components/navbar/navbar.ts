@@ -3,6 +3,7 @@ import { SidebarService } from '../../../services/sidebar.service';
 import { CategoriesFeaturedService } from '@/app/modules/category/services/categories-featured.service';
 import { Store } from '@ngrx/store';
 import { selectCartCount } from '@/app/store/cart/cart.selector';
+import { CartsidebarService } from '@/app/modules/cart/services/cartsidebar-service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,6 +15,8 @@ import { selectCartCount } from '@/app/store/cart/cart.selector';
 export class Navbar {
   private sidebarService = inject(SidebarService);
   private categoriesFeaturedService = inject(CategoriesFeaturedService);
+  private cartsidebarService = inject(CartsidebarService);
+
   categories = this.categoriesFeaturedService.categories;
 
   store = inject(Store);
@@ -21,5 +24,9 @@ export class Navbar {
 
   openSidebar() {
     this.sidebarService.open();
+  }
+
+  openCartSidebar() {
+    this.cartsidebarService.open();
   }
 }
