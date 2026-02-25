@@ -1,45 +1,65 @@
 # Mitocommerce - Project Overview
 
-This project is a modern E-commerce application built with **Angular 21**. It leverages the latest Angular features, including Standalone Components and Signals, and uses **Tailwind CSS 4** for styling.
+This project is a modern E-commerce application built with **Angular 21**, **NgRx Store**, and **Tailwind CSS 4**. It utilizes the latest Angular features like Signals, Standalone Components, and SSR Hydration to provide a performant and scalable shopping experience.
 
 ## Project Structure
 
-The codebase follows a modular architecture designed for scalability:
+The codebase is organized into a modular architecture:
 
-- **`src/app/core`**: Contains infrastructure-related code such as guards and interceptors that are singleton-like or global.
-- **`src/app/modules`**: Contains feature-specific modules (e.g., `product`). Each module is organized into `components`, `interfaces`, `pages`, and `services`.
-- **`src/app/shared`**: Houses reusable UI components, pipes, and directives. Organized under `ui/components`.
-- **`public/`**: Stores static assets like fonts (Manrope, Poppins), icons (Material Design Icons, Remixicon, UIcons), and images.
+- **`src/app/core`**: Infrastructure-related code (guards, interceptors, global services).
+- **`src/app/modules`**: Feature-specific modules (e.g., `product`, `cart`, `category`).
+  - Each module contains `components`, `interfaces`, `pages`, and `services`.
+- **`src/app/shared`**: Reusable UI components (`ui/components`), pipes, directives, and shared services.
+- **`src/app/store`**: Global state management using NgRx Store (Actions, Reducers, Selectors, Effects).
+- **`public/`**: Static assets including fonts (**Manrope**, **Poppins**), icons (**Remixicon**, **Material Design Icons**, **UIcons**), and images.
 
 ## Main Technologies
 
-- **Frontend Framework**: [Angular 21](https://angular.dev/)
+- **Frontend**: [Angular 21](https://angular.dev/)
+- **State Management**: [NgRx Store & Effects](https://ngrx.io/) for global state, and [Angular Signals](https://angular.dev/guide/signals) for local/reactive state.
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) with PostCSS.
-- **Icons**: [Remixicon](https://remixicon.com/) (and others available in `public/font/icon`).
+- **SSR & Hydration**: Angular SSR enabled with `provideClientHydration(withEventReplay())`.
 - **Test Runner**: [Vitest](https://vitest.dev/)
-- **Linting & Formatting**: [ESLint](https://eslint.org/) (with `angular-eslint`) and [Prettier](https://prettier.io/).
+- **Formatting & Linting**: ESLint and Prettier.
 
 ## Building and Running
 
-| Task                 | Command                       |
-| :------------------- | :---------------------------- |
-| Start Dev Server     | `npm start` or `ng serve`     |
-| Build for Production | `npm run build` or `ng build` |
-| Run Unit Tests       | `npm test` or `ng test`       |
-| Lint Code            | `npm run lint` or `ng lint`   |
-| Watch Build          | `npm run watch`               |
+| Task                 | Command                          |
+| :------------------- | :------------------------------- |
+| Start Dev Server     | `npm start` or `ng serve`        |
+| Build for Production | `npm run build` or `ng build`    |
+| Run Unit Tests       | `npm test` or `ng test`          |
+| Lint Code            | `npm run lint` or `ng lint`      |
+| Run SSR Server       | `npm run serve:ssr:mitocommerce` |
+
+## Session Rules & Persistence
+
+- **Cart State**: Managed globally via NgRx and persisted in `localStorage` using NgRx Effects.
+- **Hydration Safety**: Client-specific logic (e.g., loading data from `localStorage`) must be wrapped in `afterNextRender` to ensure compatibility with SSR.
+- **State Flow**: Components dispatch actions to the Store; state changes are reflected via Signal-based selectors or `toSignal`.
 
 ## Development Conventions
 
-- **Angular Signals**: Use Signals for reactive state management where possible (e.g., `signal()`, `computed()`, `effect()`).
-- **Standalone Components**: All components are standalone. Ensure they are imported directly where needed.
-- **Naming Conventions**:
-  - Components use `kebab-case` for selectors (e.g., `app-navbar`).
-  - Directives use `camelCase` for selectors (prefix `app`).
-  - Files are named using `.ts`, `.html`, and `.css` extensions.
-- **Styling**: Prefer Tailwind utility classes. Component-specific styles can be added in the corresponding `.css` files.
-- **Formatting**: Adhere to Prettier settings (100 print width, single quotes, 2-space indentation).
-- **Testing**: Use Vitest for unit tests. Ensure new components or services have corresponding `.spec.ts` files.
+- **Angular Signals**: Mandatory for local state management (`signal()`, `computed()`, `effect()`, `toSignal()`).
+- **Standalone Components**: All components are standalone. No `standalone: true` is required in the `@Component` decorator as it is the default in Angular v20+.
+- **Component Communication**: Use `input()` and `output()` functions instead of `@Input()` and `@Output()` decorators.
+- **Change Detection**: Always set `changeDetection: ChangeDetectionStrategy.OnPush`.
+- **Native Control Flow**: Use `@if`, `@for`, and `@switch` in templates instead of structural directives.
+- **Images**: Use `NgOptimizedImage` (`ngSrc`) for all static image assets.
+- **Styling**: Prefer Tailwind CSS 4 utility classes. Component-specific styles should be minimal and scoped to the `.css` file.
+- **Naming**:
+  - Files: `kebab-case` (e.g., `product-card.ts`, `cart.reducer.ts`).
+  - Selectors: `app-` prefix for components, `app` prefix (camelCase) for directives.
+
+## AI Assistant Guidelines
+
+You are an expert in TypeScript, Angular 21, and scalable web development. You write functional, maintainable, and accessible code following these standards:
+
+- **Strict Typing**: Ensure strict type checking. Use `unknown` instead of `any`.
+- **Injection**: Use the `inject()` function for dependency injection.
+- **Reactive Patterns**: Prefer Reactive forms and Signal-based data flow.
+- **Performance**: Optimize templates and use `computed()` for derived state to avoid unnecessary re-computations.
+- **Accessibility**: All components MUST meet WCAG AA standards and pass AXE checks.
 
 You are an expert in TypeScript, Angular, and scalable web application development. You write functional, maintainable, performant, and accessible code following Angular and TypeScript best practices.
 

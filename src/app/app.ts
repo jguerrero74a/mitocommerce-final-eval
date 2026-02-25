@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { afterNextRender, ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Navbar } from './shared/ui/components/navbar/navbar';
 import { Sidebar } from './shared/ui/components/sidebar/sidebar';
@@ -18,6 +18,8 @@ export class App {
   private store = inject(Store);
 
   constructor() {
-    this.store.dispatch(CartLocalStorageActions.loadCartFromLocalStorage());
+    afterNextRender(() => {
+      this.store.dispatch(CartLocalStorageActions.loadCartFromLocalStorage());
+    });
   }
 }

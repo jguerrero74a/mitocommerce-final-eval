@@ -9,15 +9,17 @@
   />
   <select class="form-select" aria-label="Seleccionar categoría">
     <option value="0">Categorías</option>
-    <!-- <option [value]="category.id">{{ category.name }}</option> -->
+    @for (category of this.categoriesFeaturedService.categories(); track category.id) {
+      <option [value]="category.id">{{ category.name }}</option>
+    }
   </select>
   <button class="search-btn" aria-label="Buscar" type="button" (click)="searchProduct()">
     <i class="ri-search-line"></i>
   </button>
 
-  @if (products().length > 0) {
+  @if (productLength() > 0) {
     <div class="search-dropdown">
-      @for (product of products(); track product.id) {
+      @for (product of productList(); track product.id) {
         <button (click)="searchProduct()" class="search-result-item">
           <div class="result-image">
             <i class="ri-shopping-bag-line"></i>
@@ -46,7 +48,7 @@
     </div>
   }
 
-  @if (products().length === 0 && searchTerm()) {
+  @if (productLength() === 0 && searchTerm()) {
     <div class="no-results">
       <div class="no-results-content">
         <i class="ri-search-line"></i>

@@ -5,4 +5,8 @@ export const serverRoutes: ServerRoute[] = [
     path: '**',
     renderMode: RenderMode.Client,
   },
+  {
+    path: 'products',
+    renderMode: RenderMode.Server,
+  },
 ];
