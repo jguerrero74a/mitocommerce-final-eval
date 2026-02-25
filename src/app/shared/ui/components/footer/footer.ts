@@ -35,7 +35,7 @@ export class Footer {
 
   onNewsletterSubmit(): void {
     if (this.newsletterEmail()) {
-      this.newsletterEmail.set('');
+      console.log(this.newsletterEmail());
     }
   }
 }

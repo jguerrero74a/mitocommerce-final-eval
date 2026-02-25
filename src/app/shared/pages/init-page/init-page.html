@@ -1,2 +1,6 @@
 <app-hero></app-hero>
-<app-popular-products></app-popular-products>
+@defer (on viewport) {
+  <app-popular-products></app-popular-products>
+} @placeholder {
+  <app-popular-products-skeleton></app-popular-products-skeleton>
+}
