@@ -41,6 +41,7 @@ export class ProductListPage {
   }
 
   getProducts() {
+    if (!this.search()) return;
     this.productService
       .getProducts({
         searchTerm: this.search() || '',

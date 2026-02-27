@@ -22,4 +22,8 @@ export class ProductService {
   getProductsFeatured() {
     return this.httpClient.get<Product[]>(`${this.apiUrl}/api/products/featured`);
   }
+
+  getProductById(id: string) {
+    return this.httpClient.get<Product>(`${environment.apiUrl}/api/products/detail/${id}`);
+  }
 }

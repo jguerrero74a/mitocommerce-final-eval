@@ -20,8 +20,8 @@
   </div>
   <div class="col-100">
     <div class="cr-product-box">
-      @for (product of products(); track product.id) {
-        <app-product-card [product]="product"></app-product-card>
+      @for (product of products(); track product.id; let i = $index) {
+        <app-product-card [product]="product" [isLcp]="i === 0"></app-product-card>
       }
     </div>
   </div>

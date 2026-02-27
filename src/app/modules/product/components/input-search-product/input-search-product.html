@@ -20,7 +20,7 @@
   @if (productLength() > 0) {
     <div class="search-dropdown">
       @for (product of productList(); track product.id) {
-        <button (click)="searchProduct()" class="search-result-item">
+        <button (click)="searchProductById(product.id)" class="search-result-item">
           <div class="result-image">
             <i class="ri-shopping-bag-line"></i>
           </div>

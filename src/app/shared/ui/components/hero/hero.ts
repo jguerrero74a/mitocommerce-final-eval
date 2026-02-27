@@ -37,7 +37,7 @@ export class Hero implements OnInit, OnDestroy {
       id: 1,
       image: '/img/banner/banner-2.jpg',
       subtitle: 'Frutas Orgánicas',
-      title: 'Explora frutas frescas y jugosas.',
+      title: 'Explora frutas frescas y .',
       description:
         'Las mejores frutas de temporada seleccionadas especialmente para ti. Sabor natural y auténtico en cada bocado.',
       buttonText: 'Comprar Ahora',

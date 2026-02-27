@@ -18,8 +18,8 @@
     <div class="product-content" id="MixItUpDA2FB7">
       <div class="w-full mb-[24px]">
         <div class="product-grid">
-          @for(product of products(); track product.id) {
-          <app-product-card [product]="product"></app-product-card>
+          @for(product of products(); track product.id; let i = $index) {
+          <app-product-card [product]="product" [isLcp]="i === 0"></app-product-card>
           }
         </div>
       </div>

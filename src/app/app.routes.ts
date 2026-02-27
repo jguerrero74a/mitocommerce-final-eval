@@ -12,4 +12,11 @@ export const routes: Routes = [
         (m) => m.ProductListPage,
       ),
   },
+  {
+    path: 'products/:id',
+    loadComponent: () =>
+      import('./modules/product/pages/product-detail-page/product-detail-page').then(
+        (m) => m.ProductDetailPage,
+      ),
+  },
 ];

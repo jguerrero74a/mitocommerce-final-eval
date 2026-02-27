@@ -6,14 +6,18 @@
           [ngSrc]="`https://maraviyainfotech.com/projects/carrot-tailwind/assets/${product().image}`"
           width="600"
           height="600"
-          alt="product-1"
+          [alt]="product().name ?? 'Product image'"
+          rel="preconnect"
         />
       </div>
       <div class="cr-side-view">
         <button (click)="addToWishList()" class="wishlist">
           <i class="ri-heart-line"></i>
         </button>
-        <a class="model-oraganic-product cr-modal-toggle">
+        <a
+          class="model-oraganic-product cr-modal-toggle"
+          [routerLink]="`/products/${product().id}`"
+        >
           <i class="ri-eye-line"></i>
         </a>
       </div>

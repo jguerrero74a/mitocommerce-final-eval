@@ -5,10 +5,11 @@ import { Store } from '@ngrx/store';
 import { selectCartCount } from '@/app/store/cart/cart.selector';
 import { CartsidebarService } from '@/app/modules/cart/services/cartsidebar-service';
 import { InputSearchProduct } from '@/app/modules/product/components/input-search-product/input-search-product';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
-  imports: [InputSearchProduct],
+  imports: [InputSearchProduct, RouterLink],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

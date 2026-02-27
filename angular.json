@@ -72,8 +72,7 @@
               "buildTarget": "mitocommerce:build:production"
             },
             "development": {
-              "buildTarget": "mitocommerce:build:development",
-              "hmr": false
+              "buildTarget": "mitocommerce:build:development"
             }
           },
           "defaultConfiguration": "development"
