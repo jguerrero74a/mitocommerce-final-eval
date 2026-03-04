@@ -28,20 +28,20 @@ describe('ProductInfoPreview', () => {
     fixture.detectChanges();
   });
 
-  it('debería crear el componente', () => {
+  it('should be created', () => {
     expect(component).toBeTruthy();
   });
 
-  it('debería renderizar la información del producto', () => {
+  it('should render the information of the product', () => {
     const productNameElement = compiledElement.querySelector('#product-name');
     expect(productNameElement?.textContent?.trim()).toBe(mockProduct.name);
   });
 
-  it('debería retornar la cantidad de rating en el computed ratingArray', () => {
+  it('should return the amount of rating', () => {
     expect(component.ratingArray()).toHaveLength(mockProduct.rating ?? 0);
   });
 
-  it('debería renderizar 5 estrellas si el rating es 5', () => {
+  it('should render 5 stars if the rating is 5', () => {
     fixture.componentRef.setInput('product', { ...mockProduct, rating: 5 });
     fixture.detectChanges();
 

@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
+import { firstValueFrom } from 'rxjs';
 
 import { ProductService } from './product.service';
 import { ProductPage } from '../interfaces/productPage';
@@ -36,14 +37,15 @@ describe('ProductService', () => {
       meta: { total: 1, limit: 10, page: 1 },
     };
 
-    it('should call the search URL when searchTerm is provided', () => {
-      service.getProducts({ searchTerm: 'laptop' }).subscribe((result) => {
-        expect(result).toEqual(mockProductPage);
-      });
+    it('should call the search URL when searchTerm is provided', async () => {
+      const result$ = firstValueFrom(service.getProducts({ searchTerm: 'laptop' }));
 
       const req = httpTesting.expectOne(`${API}/api/products?search=laptop`);
       expect(req.request.method).toBe('GET');
       req.flush(mockProductPage);
+
+      const result = await result$;
+      expect(result).toEqual(mockProductPage);
     });
 
     it('should call the category URL when searchTerm is empty', () => {

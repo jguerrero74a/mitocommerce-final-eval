@@ -5,11 +5,36 @@ import { Product } from '../../interfaces/product';
 import { cartReducer } from '@store/cart/cart.reducer';
 import { provideStore } from '@ngrx/store';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
 
 const mockProducts: Product[] = [
-  { id: '1', name: 'Laptop',  price: 999, rating: 3, stock: 5,  category: 'Electronics', image: 'laptop.jpg' },
-  { id: '2', name: 'Mouse',   price: 29,  rating: 4, stock: 20, category: 'Electronics', image: 'mouse.jpg'  },
-  { id: '3', name: 'Teclado', price: 59,  rating: 5, stock: 15, category: 'Electronics', image: 'teclado.jpg'},
+  {
+    id: '1',
+    name: 'Laptop',
+    price: 999,
+    rating: 3,
+    stock: 5,
+    category: 'Electronics',
+    image: 'laptop.jpg',
+  },
+  {
+    id: '2',
+    name: 'Mouse',
+    price: 29,
+    rating: 4,
+    stock: 20,
+    category: 'Electronics',
+    image: 'mouse.jpg',
+  },
+  {
+    id: '3',
+    name: 'Teclado',
+    price: 59,
+    rating: 5,
+    stock: 15,
+    category: 'Electronics',
+    image: 'teclado.jpg',
+  },
 ];
 
 describe('ProductList + ProductCard Integration', () => {
@@ -24,6 +49,7 @@ describe('ProductList + ProductCard Integration', () => {
       providers: [
         provideStore({ cart: cartReducer }),
         provideHttpClient(withFetch()),
+        provideRouter([]),
       ],
     }).compileComponents();
 

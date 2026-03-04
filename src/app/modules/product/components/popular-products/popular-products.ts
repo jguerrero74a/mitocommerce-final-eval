@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ProductCard } from '../product-card/product-card';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { of } from 'rxjs';
 import { ProductService } from '../../services/product.service';
 
 @Component({

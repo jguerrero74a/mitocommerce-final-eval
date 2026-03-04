@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideStore } from '@ngrx/store';
+import { provideRouter } from '@angular/router';
 
 import { PopularProducts } from './popular-products';
 import { Product } from '../../interfaces/product';
@@ -39,7 +40,12 @@ describe('PopularProducts (Integration)', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [PopularProducts],
-      providers: [provideHttpClient(), provideHttpClientTesting(), provideStore()],
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        provideStore(),
+        provideRouter([]),
+      ],
     }).compileComponents();
 
     httpTesting = TestBed.inject(HttpTestingController);
@@ -60,7 +66,7 @@ describe('PopularProducts (Integration)', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render one ProductCard per product returned by the service', () => {
+  it('should render one ProductCard for product returned by the service', () => {
     httpTesting.expectOne(`${API}/api/products/featured`).flush(mockProducts);
     fixture.detectChanges();
 
