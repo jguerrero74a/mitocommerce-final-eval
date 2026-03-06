@@ -30,7 +30,7 @@ export class ChatBot {
   messages = signal<ChatMessage[]>([
     {
       id: '1',
-      content: '¡Hola! Soy tu asistente virtual. ¿En qué puedo ayudarte con este curso?',
+      content: '¡Hola! Soy tu tienda virtual. ¿En qué puedo ayudarte en tu compra?',
       sender: 'bot',
       timestamp: new Date(),
     },
