@@ -22,16 +22,15 @@
                   <span>Cuenta</span>
                 </a>
                 <ul class="dropdown-menu">
-                  <!-- <li>
-                    <a class="dropdown-item" href="register.html">Registrarse</a>
-                  </li> -->
-                  @if (true) {
+                  @if (!authService.isAuthenticated()) {
                     <li>
                       <a class="dropdown-item" routerLink="/login">Iniciar Sesión</a>
                     </li>
                   } @else {
                     <li>
-                      <button class="dropdown-item">Cerrar Sesión</button>
+                      <button (click)="authService.logout()" class="dropdown-item">
+                        Cerrar Sesión
+                      </button>
                     </li>
                   }
                 </ul>

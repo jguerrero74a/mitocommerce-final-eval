@@ -4,6 +4,10 @@ import { NgOptimizedImage } from '@angular/common';
 import { Product } from '../../interfaces/product';
 import { CartActions } from '@/app/store/cart/cart.actions';
 import { RouterLink } from '@angular/router';
+import { WishlistService } from '@/app/modules/wishlist/services/wishlist.service';
+import { lastValueFrom } from 'rxjs';
+import { AuthService } from '@/app/modules/auth/services/auth-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-card',
@@ -24,12 +28,19 @@ export class ProductCard {
   });
   ratingArray = computed(() => Array.from({ length: Math.round(this.product().rating ?? 0) ?? 0 }));
   store = inject(Store);
+  wishListService = inject(WishlistService);
+  authService = inject(AuthService);
+  router = inject(Router);
 
   addToCart() {
     this.store.dispatch(CartActions.addProduct({ product: this.product() }));
   }
 
-  addToWishList() {
-    console.log('Add');
+  async addToWishList() {
+    if (!this.authService.isAuthenticated()) {
+      this.router.navigate(['/login']);
+      return;
+    }
+    await lastValueFrom(this.wishListService.addToWishlist(this.product().id));
   }
 }

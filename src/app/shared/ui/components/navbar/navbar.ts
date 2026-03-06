@@ -6,6 +6,7 @@ import { selectCartCount } from '@/app/store/cart/cart.selector';
 import { CartsidebarService } from '@/app/modules/cart/services/cartsidebar-service';
 import { InputSearchProduct } from '@/app/modules/product/components/input-search-product/input-search-product';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '@/app/modules/auth/services/auth-service';
 
 @Component({
   selector: 'app-navbar',
@@ -18,6 +19,7 @@ export class Navbar {
   private sidebarService = inject(SidebarService);
   private categoriesFeaturedService = inject(CategoriesFeaturedService);
   private cartsidebarService = inject(CartsidebarService);
+  authService = inject(AuthService);
 
   categories = this.categoriesFeaturedService.categories;
 

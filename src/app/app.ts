@@ -6,10 +6,11 @@ import { Footer } from './shared/ui/components/footer/footer';
 import { ShoppingCartSidebar } from './modules/cart/components/shopping-cart-sidebar/shopping-cart-sidebar';
 import { Store } from '@ngrx/store';
 import { CartLocalStorageActions } from './store/cart/cart.actions';
+import { ChatBot } from './shared/ui/components/chat-bot/chat-bot';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar, Sidebar, Footer, ShoppingCartSidebar],
+  imports: [RouterOutlet, Navbar, Sidebar, Footer, ShoppingCartSidebar, ChatBot],
   templateUrl: './app.html',
   styleUrl: './app.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
