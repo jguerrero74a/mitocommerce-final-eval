@@ -31,4 +31,9 @@ export const routes: Routes = [
       import('./modules/wishlist/pages/wishlist-page').then((m) => m.WishlistPage),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'checkout',
+    loadComponent: () =>
+      import('./modules/checkout/pages/checkout-page/checkout-page').then((m) => m.CheckoutPage),
+  },
 ];

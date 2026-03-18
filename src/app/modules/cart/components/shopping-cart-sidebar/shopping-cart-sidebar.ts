@@ -1,13 +1,14 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CartsidebarService } from '../../services/cartsidebar-service';
 import { Store } from '@ngrx/store';
 import { Product } from '@/app/modules/product/interfaces/product';
 import { selectCartProducts, selectCartTotal } from '@/app/store/cart/cart.selector';
 import { CartActions } from '@/app/store/cart/cart.actions';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-shopping-cart-sidebar',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './shopping-cart-sidebar.html',
   styleUrl: './shopping-cart-sidebar.css',
 })
