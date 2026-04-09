@@ -9,34 +9,28 @@
         Resumen
       </h3>
     </div>
+
     <div class="cr-sb-block-content mb-0 mt-[15px]">
       <div class="cr-checkout-summary">
         <div class="flex justify-between items-center mb-[10px]">
-          <span class="text-left text-[#7a7a7a] text-[14px] leading-[24px] tracking-[0]"
-            >Subtotal</span
-          >
-          <span class="text-right text-black text-[15px] leading-[24px] font-medium">
+          <span class="text-left text-[#7a7a7a] text-[14px] leading-[24px]">Subtotal</span>
+          <span class="text-right text-black text-[15px] font-medium">
             S/. {{ subtotal().toFixed(2) }}
           </span>
         </div>
+
         <div class="flex justify-between items-center mb-[10px]">
-          <span class="text-left text-[#7a7a7a] text-[14px] leading-[24px] tracking-[0]"
-            >Costo de Envío</span
-          >
-          <span class="text-right text-black text-[15px] leading-[24px] font-medium">
+          <span class="text-left text-[#7a7a7a] text-[14px] leading-[24px]">Costo de Envío</span>
+          <span class="text-right text-black text-[15px] font-medium">
             S/. {{ shippingCost().toFixed(2) }}
           </span>
         </div>
+
         <div
           class="cr-checkout-summary-total flex justify-between items-center mb-0 border-t border-solid border-[#e9e9e9] pt-[19px] mt-[16px]"
         >
-          <span
-            class="text-left font-Manrope text-[16px] font-semibold text-[#2b2b2d] leading-[24px] tracking-[0]"
-            >Total</span
-          >
-          <span
-            class="text-right font-Manrope text-[16px] font-semibold text-[#2b2b2d] leading-[24px] tracking-[0]"
-          >
+          <span class="text-left font-Manrope text-[16px] font-semibold text-[#2b2b2d]">Total</span>
+          <span class="text-right font-Manrope text-[16px] font-semibold text-[#2b2b2d]">
             S/. {{ total().toFixed(2) }}
           </span>
         </div>
@@ -48,45 +42,39 @@
             <div class="cr-product-inner flex flex-row items-center">
               <div class="cr-pro-image-outer w-[80px] mr-[15px]">
                 <div class="cr-pro-image overflow-hidden">
-                  <div class="image">
-                    <img
-                      class="main-image w-full"
-                      [src]="`https://maraviyainfotech.com/projects/carrot-tailwind/assets/${item.image}`"
-                      [alt]="item.name"
-                    />
-                  </div>
+                  <img
+                    class="main-image w-full rounded-[5px]"
+                    [src]="
+                      'https://maraviyainfotech.com/projects/carrot-tailwind/assets/' + item.image
+                    "
+                    [alt]="item.name"
+                  />
                 </div>
               </div>
-              <div
-                class="cr-pro-content cr-product-details justify-start w-[calc(100%-143px)] p-0 flex flex-col border-0"
-              >
+              <div class="cr-pro-content justify-start w-[calc(100%-95px)] p-0 flex flex-col">
                 <h5
-                  class="cr-pro-title text-left mb-[.5rem] pr-[15px] text-[15px] leading-[1.2] max-[1200px]:mb-0"
+                  class="text-left mb-[4px] pr-[15px] text-[15px] font-medium text-black leading-[1.2]"
                 >
-                  <span class="text-[15px] text-black font-medium leading-[1.2]">
-                    {{ item.name }} (x{{ item.quantity }})
-                  </span>
+                  {{ item.name }} <span class="text-[#7a7a7a]">(x{{ item.quantity }})</span>
                 </h5>
                 <div class="cr-pro-rating mb-[5px] text-left">
-                  <i class="ri-star-fill text-[14px] text-[#f4a263]"></i>
-                  <i class="ri-star-fill text-[14px] text-[#f4a263]"></i>
-                  <i class="ri-star-fill text-[14px] text-[#f4a263]"></i>
-                  <i class="ri-star-fill text-[14px] text-[#f4a263]"></i>
-                  <i class="ri-star-line text-[14px] text-[#f4a263]"></i>
+                  <i class="ri-star-fill text-[12px] text-[#f4a263]"></i>
+                  <i class="ri-star-fill text-[12px] text-[#f4a263]"></i>
+                  <i class="ri-star-fill text-[12px] text-[#f4a263]"></i>
+                  <i class="ri-star-fill text-[12px] text-[#f4a263]"></i>
+                  <i class="ri-star-line text-[12px] text-[#f4a263]"></i>
                 </div>
-                <p
-                  class="cr-price font-Poppins text-[16px] leading-[1.75] text-[#7a7a7a] text-left max-[1200px]:text-[14px]"
-                >
-                  <span class="new-price text-[#64b496] font-bold">
-                    S/. {{ calculateItemTotal(item.price, item.quantity) }}
+                <p class="text-left">
+                  <span class="new-price text-[#64b496] font-bold text-[15px]">
+                    S/. {{ calculateItemTotal(item.price, item.quantity).toFixed(2) }}
                   </span>
                 </p>
               </div>
             </div>
           </div>
         } @empty {
-          <div class="text-center py-4">
-            <p class="text-[#7a7a7a] text-[14px]">No hay productos en el carrito</p>
+          <div class="text-center py-6 border border-dashed border-[#e9e9e9] rounded-[5px]">
+            <p class="text-[#7a7a7a] text-[14px]">Tu carrito está vacío</p>
           </div>
         }
       </div>

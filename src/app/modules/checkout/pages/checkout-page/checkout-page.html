@@ -1,5 +1,3 @@
-<app-breadcrumb title="Checkout"></app-breadcrumb>
-
 <section class="cr-checkout-section py-[100px] max-[1200px]:py-[70px]">
   <div
     class="flex flex-wrap justify-between relative items-center mx-auto min-[1600px]:max-w-[1500px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px]"
@@ -8,76 +6,55 @@
       <div
         class="cr-checkout-rightside min-[992px]:w-[33.33%] min-[768px]:w-full w-full px-[12px] mb-[24px]"
       >
-        <app-cart-summary></app-cart-summary>
+        <app-cart-summary [shippingCost]="selectedShippingCost()"></app-cart-summary>
 
         <div
-          class="cr-sidebar-wrap cr-checkout-del-wrap border border-solid border-[#e9e9e9] mb-[30px] p-[15px] bg-white rounded-[5px]"
+          class="cr-sidebar-wrap border border-solid border-[#e9e9e9] mb-[30px] p-[15px] bg-white rounded-[5px] mt-[30px]"
         >
-          <div class="cr-sidebar-block">
-            <div class="cr-sb-title">
-              <h3
-                class="cr-sidebar-title text-[20px] font-semibold tracking-[0] mb-0 relative text-black leading-[1.2]"
-              >
-                Método de Envío
-              </h3>
-            </div>
+          <h3 class="text-[20px] font-semibold mb-[15px]">Método de Envío</h3>
+          <div class="cr-checkout-del">
+            <p class="text-[#7a7a7a] text-[14px] mb-[15px]">
+              Selecciona el método de envío para actualizar tu total.
+            </p>
 
-            <div class="cr-sb-block-content mb-0 mt-[15px]">
-              <div class="cr-checkout-del">
-                <div
-                  class="cr-del-desc text-[#7a7a7a] text-[14px] font-normal leading-[24px] mb-[15px] block tracking-[0]"
-                >
-                  Por favor selecciona el método de envío preferido para este pedido.
+            <form>
+              <div class="flex flex-row mb-[15px]">
+                <div class="w-[50%]">
+                  <span class="block text-[15px] font-medium mb-1">Envío Gratis</span>
+                  <input
+                    type="radio"
+                    id="del1"
+                    name="shipping"
+                    [checked]="selectedShippingCost() === 0"
+                    (change)="onShippingChange(0)"
+                  />
+                  <label for="del1" class="pl-2 text-[14px] text-[#7a7a7a] cursor-pointer"
+                    >S/0.00</label
+                  >
                 </div>
-
-                <form action="#">
-                  <span class="cr-del-option flex">
-                    <span class="w-[50%]">
-                      <span
-                        class="cr-del-opt-head text-[#2b2b2d] text-[15px] font-medium tracking-[0] leading-none mb-[10px] block"
-                        >Envío Gratis</span
-                      >
-
-                      <input type="radio" id="del1" name="radio-group" checked="" />
-
-                      <label
-                        for="del1"
-                        class="relative pl-[26px] cursor-pointer leading-[16px] text-[14px] inline-block text-[#7a7a7a] tracking-[0] mb-[15px]"
-                        >Tarifa - S/0.00</label
-                      >
-                    </span>
-
-                    <span class="w-[50%]">
-                      <span
-                        class="cr-del-opt-head text-[#2b2b2d] text-[15px] font-medium tracking-[0] leading-none mb-[10px] block"
-                        >Tarifa Fija</span
-                      >
-
-                      <input type="radio" id="del2" name="radio-group" />
-
-                      <label
-                        for="del2"
-                        class="relative pl-[26px] cursor-pointer leading-[16px] text-[14px] inline-block text-[#7a7a7a] tracking-[0] mb-[15px]"
-                        >Tarifa - S/5.00</label
-                      >
-                    </span>
-                  </span>
-
-                  <span class="cr-del-commemt mt-[12px] block">
-                    <span
-                      class="cr-del-opt-head mb-[8px] text-[#2b2b2d] text-[15px] font-medium tracking-[0] leading-none block"
-                      >Agregar comentarios sobre tu pedido</span
-                    >
-
-                    <textarea
-                      name="your-commemt"
-                      placeholder="Comentarios"
-                      class="bg-transparent border border-solid border-[#e9e9e9] text-[#2b2b2d] h-[100px] py-[10px] px-[15px] mb-0 w-full outline-0 text-[14px] block rounded-[5px]"
-                    ></textarea>
-                  </span>
-                </form>
+                <div class="w-[50%]">
+                  <span class="block text-[15px] font-medium mb-1">Tarifa Fija</span>
+                  <input
+                    type="radio"
+                    id="del2"
+                    name="shipping"
+                    [checked]="selectedShippingCost() === 5"
+                    (change)="onShippingChange(5)"
+                  />
+                  <label for="del2" class="pl-2 text-[14px] text-[#7a7a7a] cursor-pointer"
+                    >S/5.00</label
+                  >
+                </div>
               </div>
-            </div>
+
+              <div class="mt-4">
+                <span class="block text-[15px] font-medium mb-2">Comentarios del pedido</span>
+                <textarea
+                  class="w-full border border-[#e9e9e9] p-3 text-[14px] rounded-[5px] h-[100px] outline-none"
+                  placeholder="Notas especiales..."
+                ></textarea>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -85,273 +62,98 @@
       <div
         class="cr-checkout-leftside min-[992px]:w-[66.66%] min-[768px]:w-full w-full px-[12px] mb-[24px]"
       >
-        <div class="cr-checkout-content">
-          <div class="cr-checkout-inner">
-            <div
-              class="cr-checkout-wrap p-[24px] border border-solid border-[#e9e9e9] bg-white rounded-[5px]"
-            >
-              <div class="cr-checkout-block cr-check-bill">
-                <h3
-                  class="cr-checkout-title text-[20px] font-semibold tracking-[0] mb-[26px] relative block text-[#2b2b2d] text-manrope leading-[1.2] max-[576px]:text-[18px]"
-                >
-                  Detalles de Facturación
-                </h3>
+        <div class="p-[24px] border border-solid border-[#e9e9e9] bg-white rounded-[5px]">
+          <h3 class="text-[20px] font-semibold mb-[26px]">Detalles de Facturación</h3>
 
-                <div class="cr-bl-block-content">
-                  <div
-                    class="cr-check-subtitle mb-[10px] text-[#2b2b2d] text-[15px] font-medium tracking-[0] leading-none"
-                  >
-                    Opciones de Pago
-                  </div>
-
-                  <div class="cr-check-bill-form mb-[-24px]">
-                    <form action="#" method="post" class="flex flex-row flex-wrap mx-[-15px]">
-                      <span class="cr-bill-wrap cr-bill-half w-[50%] max-[576px]:w-full px-[15px]">
-                        <label
-                          for="firstname"
-                          class="mb-[7px] inline-block text-[#2b2b2d] text-[15px] font-medium tracking-[0] leading-none"
-                          >Nombre*</label
-                        >
-
-                        <input
-                          type="text"
-                          name="firstname"
-                          placeholder="Ingresa tu nombre"
-                          class="h-[50px] bg-transparent border border-solid border-[#e9e9e9] text-[#2b2b2d] text-[14px] mb-[26px] px-[15px] w-full outline-0 rounded-[5px]"
-                          required=""
-                        />
-                      </span>
-
-                      <span class="cr-bill-wrap cr-bill-half w-[50%] max-[576px]:w-full px-[15px]">
-                        <label
-                          for="lastname"
-                          class="mb-[7px] inline-block text-[#2b2b2d] text-[15px] font-medium tracking-[0] leading-none"
-                          >Apellido*</label
-                        >
-
-                        <input
-                          type="text"
-                          name="lastname"
-                          placeholder="Ingresa tu apellido"
-                          class="h-[50px] bg-transparent border border-solid border-[#e9e9e9] text-[#2b2b2d] text-[14px] mb-[26px] px-[15px] w-full outline-0 rounded-[5px]"
-                          required=""
-                        />
-                      </span>
-
-                      <span class="cr-bill-wrap w-full px-[15px]">
-                        <label
-                          for="address"
-                          class="mb-[7px] inline-block text-[#2b2b2d] text-[15px] font-medium tracking-[0] leading-none"
-                          >Dirección</label
-                        >
-
-                        <input
-                          type="text"
-                          name="address"
-                          class="h-[50px] bg-transparent border border-solid border-[#e9e9e9] text-[#2b2b2d] text-[14px] mb-[26px] px-[15px] w-full outline-0 rounded-[5px]"
-                          placeholder="Línea de dirección"
-                        />
-                      </span>
-
-                      <span class="cr-bill-wrap cr-bill-half w-[50%] max-[576px]:w-full px-[15px]">
-                        <label
-                          for="city"
-                          class="mb-[7px] inline-block text-[#2b2b2d] text-[15px] font-medium tracking-[0] leading-none"
-                          >Ciudad *</label
-                        >
-
-                        <span
-                          class="cr-bl-select-inner relative flex w-full h-[50px] border border-solid border-[#e9e9e9] text-[14px] p-0 mb-[24px] rounded-[5px]"
-                        >
-                          <select
-                            name="cr_select_city"
-                            id="cr-select-city"
-                            class="cr-bill-select appearance-none outline-0 border-0 bg-white flex-1 px-[10px] text-[#7a7a7a] cursor-pointer rounded-[5px]"
-                          >
-                            <option selected="" disabled="">Ciudad</option>
-
-                            <option value="1">City 1</option>
-
-                            <option value="2">City 2</option>
-
-                            <option value="3">City 3</option>
-
-                            <option value="4">City 4</option>
-
-                            <option value="5">City 5</option>
-                          </select>
-                        </span>
-                      </span>
-
-                      <span class="cr-bill-wrap cr-bill-half w-[50%] max-[576px]:w-full px-[15px]">
-                        <label
-                          for="postalcode"
-                          class="mb-[7px] inline-block text-[#2b2b2d] text-[15px] font-medium tracking-[0] leading-none"
-                          >Código Postal</label
-                        >
-
-                        <input
-                          type="text"
-                          name="postalcode"
-                          class="h-[50px] bg-transparent border border-solid border-[#e9e9e9] text-[#2b2b2d] text-[14px] mb-[26px] px-[15px] w-full outline-0 rounded-[5px]"
-                          placeholder="Código Postal"
-                        />
-                      </span>
-
-                      <span class="cr-bill-wrap cr-bill-half w-[50%] max-[576px]:w-full px-[15px]">
-                        <label
-                          for="country"
-                          class="mb-[7px] inline-block text-[#2b2b2d] text-[15px] font-medium tracking-[0] leading-none"
-                          >País *</label
-                        >
-
-                        <span
-                          class="cr-bl-select-inner relative flex w-full h-[50px] border border-solid border-[#e9e9e9] text-[14px] p-0 mb-[24px] rounded-[5px]"
-                        >
-                          <select
-                            name="cr_select_country"
-                            id="cr-select-country"
-                            class="cr-bill-select appearance-none outline-0 border-0 bg-white flex-1 px-[10px] text-[#7a7a7a] cursor-pointer rounded-[5px]"
-                          >
-                            <option selected="" disabled="">País</option>
-
-                            <option value="1">Country 1</option>
-
-                            <option value="2">Country 2</option>
-
-                            <option value="3">Country 3</option>
-
-                            <option value="4">Country 4</option>
-
-                            <option value="5">Country 5</option>
-                          </select>
-                        </span>
-                      </span>
-
-                      <span class="cr-bill-wrap cr-bill-half w-[50%] max-[576px]:w-full px-[15px]">
-                        <label
-                          for="state"
-                          class="mb-[7px] inline-block text-[#2b2b2d] text-[15px] font-medium tracking-[0] leading-none"
-                          >Región / Estado</label
-                        >
-
-                        <span
-                          class="cr-bl-select-inner relative flex w-full h-[50px] border border-solid border-[#e9e9e9] text-[14px] p-0 mb-[24px] rounded-[5px]"
-                        >
-                          <select
-                            name="cr_select_state"
-                            id="cr-select-state"
-                            class="cr-bill-select appearance-none outline-0 border-0 bg-white flex-1 px-[10px] text-[#7a7a7a] cursor-pointer rounded-[5px]"
-                          >
-                            <option selected="" disabled="">Región/Estado</option>
-
-                            <option value="1">Región/Estado 1</option>
-
-                            <option value="2">Región/Estado 2</option>
-
-                            <option value="3">Región/Estado 3</option>
-
-                            <option value="4">Región/Estado 4</option>
-
-                            <option value="5">Región/Estado 5</option>
-                          </select>
-                        </span>
-                      </span>
-                    </form>
-                  </div>
-                </div>
-              </div>
+          <form class="flex flex-wrap mx-[-15px]">
+            <div class="w-1/2 px-[15px] mb-[20px] max-[576px]:w-full">
+              <label class="block text-[15px] font-medium mb-1">Nombre*</label>
+              <input
+                type="text"
+                class="w-full h-[50px] border border-[#e9e9e9] px-[15px] rounded-[5px]"
+                required
+              />
+            </div>
+            <div class="w-1/2 px-[15px] mb-[20px] max-[576px]:w-full">
+              <label class="block text-[15px] font-medium mb-1">Apellido*</label>
+              <input
+                type="text"
+                class="w-full h-[50px] border border-[#e9e9e9] px-[15px] rounded-[5px]"
+                required
+              />
             </div>
 
-            <div
-              class="cr-sidebar-wrap cr-checkout-pay-wrap border border-solid border-[#e9e9e9] mb-[30px] p-[15px] bg-white rounded-[5px] mt-[30px]"
-            >
-              <div class="cr-sidebar-block">
-                <div class="cr-sb-title">
-                  <h3
-                    class="cr-sidebar-title text-[20px] font-semibold tracking-[0] mb-0 relative text-black leading-[1.2]"
-                  >
-                    Método de Pago
-                  </h3>
-                </div>
-
-                <div class="cr-sb-block-content mb-0 mt-[15px]">
-                  <div class="cr-checkout-pay">
-                    <div
-                      class="cr-pay-desc text-[#7a7a7a] text-[14px] font-light leading-[24px] mb-[15px] block tracking-[0]"
-                    >
-                      Por favor selecciona el método de pago preferido para este pedido.
-                    </div>
-
-                    <form action="#" class="payment-options flex flex-col">
-                      <span class="cr-pay-option mb-[10px]">
-                        <span>
-                          <input type="radio" id="pay1" name="radio-group" checked="" />
-
-                          <label
-                            for="pay1"
-                            class="mb-0 relative pl-[26px] cursor-pointer leading-[16px] inline-block text-[#7a7a7a] tracking-[0] text-[14px]"
-                            >Pago contra entrega</label
-                          >
-                        </span>
-                      </span>
-
-                      <span class="cr-pay-option mb-[10px]">
-                        <span>
-                          <input type="radio" id="pay2" name="radio-group" />
-
-                          <label
-                            for="pay2"
-                            class="mb-0 relative pl-[26px] cursor-pointer leading-[16px] inline-block text-[#7a7a7a] tracking-[0] text-[14px]"
-                            >Yape</label
-                          >
-                        </span>
-                      </span>
-
-                      <span class="cr-pay-option">
-                        <span>
-                          <input type="radio" id="pay3" name="radio-group" />
-
-                          <label
-                            for="pay3"
-                            class="mb-0 relative pl-[26px] cursor-pointer leading-[16px] inline-block text-[#7a7a7a] tracking-[0] text-[14px]"
-                            >Transferencia Bancaria</label
-                          >
-                        </span>
-                      </span>
-                    </form>
-                  </div>
-                </div>
-              </div>
+            <div class="w-full px-[15px] mb-[20px]">
+              <label class="block text-[15px] font-medium mb-1">Dirección*</label>
+              <input
+                type="text"
+                placeholder="Calle, número, departamento"
+                class="w-full h-[50px] border border-[#e9e9e9] px-[15px] rounded-[5px]"
+                required
+              />
             </div>
 
-            <div
-              class="cr-sidebar-wrap cr-check-pay-img-wrap border border-solid border-[#e9e9e9] mb-0 p-[15px] bg-white rounded-[5px]"
-            >
-              <div class="cr-sidebar-block">
-                <div
-                  class="cr-sb-title text-[20px] font-semibold tracking-[0] mb-0 relative text-black leading-[1.2]"
-                >
-                  <h3 class="cr-sidebar-title">Método de Pago</h3>
-                </div>
-
-                <div class="cr-sb-block-content mb-0 mt-[15px]">
-                  <div class="cr-check-pay-img-inner flex justify-between w-full flex-wrap">
-                    <div class="cr-check-pay-img">
-                      <img src="img/banner/payment.png" alt="payment" class="w-full" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <span class="cr-check-order-btn flex justify-end p-0">
-              <a
-                class="mt-[30px] cr-button h-[40px] font-bold transition-all duration-300 ease-in-out py-[8px] px-[22px] text-[14px] font-Manrope capitalize leading-[1.2] bg-[#64b496] text-white border border-solid border-[#64b496] rounded-[5px] flex items-center justify-center hover:bg-black hover:border-black"
-                href="#"
-                >Realizar Pedido</a
+            <div class="w-1/2 px-[15px] mb-[20px] max-[576px]:w-full">
+              <label class="block text-[15px] font-medium mb-1">Ciudad*</label>
+              <select
+                class="w-full h-[50px] border border-[#e9e9e9] px-[15px] rounded-[5px] bg-white"
               >
-            </span>
+                <option selected disabled>Seleccionar ciudad</option>
+                <option>Lima</option>
+                <option>Arequipa</option>
+                <option>Trujillo</option>
+              </select>
+            </div>
+            <div class="w-1/2 px-[15px] mb-[20px] max-[576px]:w-full">
+              <label class="block text-[15px] font-medium mb-1">Código Postal</label>
+              <input
+                type="text"
+                class="w-full h-[50px] border border-[#e9e9e9] px-[15px] rounded-[5px]"
+              />
+            </div>
+
+            <div class="w-1/2 px-[15px] mb-[20px] max-[576px]:w-full">
+              <label class="block text-[15px] font-medium mb-1">País*</label>
+              <select
+                class="w-full h-[50px] border border-[#e9e9e9] px-[15px] rounded-[5px] bg-white"
+              >
+                <option>Perú</option>
+              </select>
+            </div>
+            <div class="w-1/2 px-[15px] mb-[20px] max-[576px]:w-full">
+              <label class="block text-[15px] font-medium mb-1">Región / Estado*</label>
+              <select
+                class="w-full h-[50px] border border-[#e9e9e9] px-[15px] rounded-[5px] bg-white"
+              >
+                <option selected disabled>Seleccionar región</option>
+                <option>Lima Metropolitana</option>
+                <option>Callao</option>
+              </select>
+            </div>
+          </form>
+
+          <div class="mt-8 pt-8 border-t border-[#e9e9e9]">
+            <h3 class="text-[18px] font-semibold mb-4">Método de Pago</h3>
+            <div class="flex flex-col gap-3">
+              <label class="flex items-center cursor-pointer text-[14px] text-[#7a7a7a]">
+                <input type="radio" name="payment" checked class="mr-2" /> Pago contra entrega
+              </label>
+              <label class="flex items-center cursor-pointer text-[14px] text-[#7a7a7a]">
+                <input type="radio" name="payment" class="mr-2" /> Yape / Plin
+              </label>
+              <label class="flex items-center cursor-pointer text-[14px] text-[#7a7a7a]">
+                <input type="radio" name="payment" class="mr-2" /> Transferencia Bancaria
+              </label>
+            </div>
+          </div>
+
+          <div class="flex justify-end mt-8">
+            <button
+              (click)="onSubmitOrder()"
+              class="bg-[#64b496] text-white px-10 py-3 rounded-[5px] font-bold hover:bg-black transition-all"
+            >
+              Realizar Pedido
+            </button>
           </div>
         </div>
       </div>
