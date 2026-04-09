@@ -12,8 +12,10 @@
       <div class="cr-cart-top">
         <div class="cr-cart-title">
           <h6>Mi carrito</h6>
+
           <button type="button" (click)="cartsidebarService.close()" class="close-cart">×</button>
         </div>
+
         <ul class="crcart-pro-items">
           @for (product of productsInCart(); track product.id) {
             <li class="cart-product-item">
@@ -23,14 +25,18 @@
                   alt="product-1"
                 />
               </a>
+
               <div class="cr-pro-content">
                 <a href="product-left-sidebar.html" class="cart_pro_title">{{ product.name }}</a>
+
                 <span class="cart-price"
                   ><span>{{ product.price }}</span> x 10kg</span
                 >
+
                 <div class="cr-cart-qty">
                   <div class="cart-qty-plus-minus">
                     <button type="button" (click)="addQuantity(product)" class="qty-btn">+</button>
+
                     <input
                       type="text"
                       placeholder="."
@@ -40,30 +46,36 @@
                       class="quantity"
                       [value]="product.quantity"
                     />
+
                     <button type="button" (click)="restQuantity(product.id)" class="qty-btn">
                       -
                     </button>
                   </div>
                 </div>
+
                 <a href="javascript:void(0)" class="remove">×</a>
               </div>
             </li>
           }
         </ul>
       </div>
+
       <div class="cr-cart-bottom">
         <div class="cart-sub-total">
           <table class="cart-table">
             <tbody>
               <tr>
                 <td>Total :</td>
+
                 <td>S/{{ totalProducts().toFixed(2) }}</td>
               </tr>
             </tbody>
           </table>
         </div>
+
         <div class="cart_btn">
           <a href="cart.html" class="cr-button">View Cart</a>
+
           <a routerLink="/checkout" class="cr-btn-secondary">Checkout</a>
         </div>
       </div>

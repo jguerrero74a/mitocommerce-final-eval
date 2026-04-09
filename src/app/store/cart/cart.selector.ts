@@ -1,4 +1,5 @@
 import { Product } from '@/app/modules/product/interfaces/product';
+
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 export const selectCartItems = createFeatureSelector<readonly Product[]>('cart');

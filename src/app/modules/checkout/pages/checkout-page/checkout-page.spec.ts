@@ -4,16 +4,20 @@ import { CheckoutPage } from './checkout-page';
 
 describe('CheckoutPage', () => {
   let component: CheckoutPage;
+
   let fixture: ComponentFixture<CheckoutPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CheckoutPage]
+      imports: [CheckoutPage],
     })
-    .compileComponents();
+
+      .compileComponents();
 
     fixture = TestBed.createComponent(CheckoutPage);
+
     component = fixture.componentInstance;
+
     fixture.detectChanges();
   });
 

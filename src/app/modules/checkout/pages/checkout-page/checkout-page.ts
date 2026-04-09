@@ -4,8 +4,8 @@ import { Breadcrumb } from '@/app/shared/ui/components/breadcrumb/breadcrumb';
 
 @Component({
   selector: 'app-checkout-page',
+  standalone: true,
   imports: [CartSummary, Breadcrumb],
   templateUrl: './checkout-page.html',
-  styles: ``,
 })
 export class CheckoutPage {}

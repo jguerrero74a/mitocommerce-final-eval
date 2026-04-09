@@ -4,16 +4,20 @@ import { CartSummary } from './cart-summary';
 
 describe('CartSummary', () => {
   let component: CartSummary;
+
   let fixture: ComponentFixture<CartSummary>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CartSummary]
+      imports: [CartSummary],
     })
-    .compileComponents();
+
+      .compileComponents();
 
     fixture = TestBed.createComponent(CartSummary);
+
     component = fixture.componentInstance;
+
     fixture.detectChanges();
   });
 

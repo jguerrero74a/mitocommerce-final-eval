@@ -1,0 +1,101 @@
+[33mcommit 9e997c63d1d94f0581e590a4811116745052bfbe[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mclase-11[m[33m, [m[1;31morigin/clase-11[m[33m)[m
+Author: jfloresxc <jfloresxc@gmail.com>
+Date:   Tue Mar 17 20:12:32 2026 -0500
+
+    feat(checkout): integrar modulo de pago
+
+[33mcommit e1b663f36c02137c7135befcabf51958d29ca2f9[m[33m ([m[1;31morigin/clase-9[m[33m)[m
+Author: jfloresxc <jfloresxc@gmail.com>
+Date:   Thu Mar 12 18:58:26 2026 -0500
+
+    feat(vercel): integrar vercel en despliegue de proyecto
+
+[33mcommit bc382d1ec43e2f7a730c0c5366559148468adf88[m
+Author: jfloresxc <jfloresxc@gmail.com>
+Date:   Thu Mar 5 21:56:37 2026 -0500
+
+    feat(chat-bot): integrar chatbot con genkit y modelo gemini 2.5
+
+[33mcommit ca1ff9fe1c599a017caefee3ca2b351a6cd48b76[m
+Author: jfloresxc <jfloresxc@gmail.com>
+Date:   Thu Mar 5 21:19:15 2026 -0500
+
+    feat(wishlist): agregar productos destacados - favoritos con auth
+
+[33mcommit 348cdd38e525a3a35b0c80abd4b8e1699ef4ee3c[m[33m ([m[1;31morigin/clase-7[m[33m)[m
+Author: jfloresxc <jfloresxc@gmail.com>
+Date:   Tue Mar 3 23:29:32 2026 -0500
+
+    feat(cypress): integrar cypress
+
+[33mcommit ec1f55e99e3b3a008b2902fe7f75d07ec307e0be[m[33m ([m[1;31morigin/clase-6[m[33m, [m[1;32mclase-6[m[33m)[m
+Author: jfloresxc <jfloresxc@gmail.com>
+Date:   Thu Feb 26 22:02:30 2026 -0500
+
+    feat(testing): implementar vitest como testrunner
+
+[33mcommit 5048658fb0e40255a44980ee86918a78920145c5[m[33m ([m[1;31morigin/clase-5A[m[33m)[m
+Author: jfloresxc <jfloresxc@gmail.com>
+Date:   Tue Feb 24 22:10:16 2026 -0500
+
+    feat(incremental-hydratation): desactivar hmr para funcionamiento total
+
+[33mcommit f8b4ddd319a2b084619ef55db803df45ac40ea3c[m
+Author: jfloresxc <jfloresxc@gmail.com>
+Date:   Tue Feb 24 22:08:14 2026 -0500
+
+    feat(lazy-loading): agregar carga perezosa para componente
+
+[33mcommit b063d2be679bf241474fce4355c0f808718848e0[m
+Author: jfloresxc <jfloresxc@gmail.com>
+Date:   Tue Feb 24 21:34:41 2026 -0500
+
+    feat(input-search): agregar buscador hacia pagina de productos
+
+[33mcommit bdf1adf247ea0f5c807877b5c81e9ef26b81ee1f[m
+Author: jfloresxc <jfloresxc@gmail.com>
+Date:   Tue Feb 24 19:21:48 2026 -0500
+
+    feat(product): implementar ssr para lista de productos
+
+[33mcommit 53659e5e90860149974526b691a145d7ed0af477[m[33m ([m[1;31morigin/clase-4[m[33m)[m
+Author: jfloresxc <jfloresxc@gmail.com>
+Date:   Thu Feb 19 21:26:30 2026 -0500
+
+    feat(cart): implementar efectos para guardado de localstorage
+
+[33mcommit 262ab46e472ff2989a392d2a9afe9050daf2bf4c[m
+Author: jfloresxc <jfloresxc@gmail.com>
+Date:   Thu Feb 19 19:34:04 2026 -0500
+
+    feat(popular-product): setear componentes sobre productos
+
+[33mcommit 7e451dad592243252c67d299eac72be316db0530[m[33m ([m[1;31morigin/clase-3[m[33m, [m[1;32mmaster[m[33m, [m[1;32mclase-3[m[33m)[m
+Author: jfloresxc <jfloresxc@gmail.com>
+Date:   Tue Feb 17 21:59:52 2026 -0500
+
+    feat(ngrx): agregar configuracion de ngrx store
+
+[33mcommit a2422d66ced355e769bf53972d1a8a9e41da646d[m[33m ([m[1;31morigin/clase-2[m[33m, [m[1;32mclase-2[m[33m)[m
+Author: jfloresxc <jfloresxc@gmail.com>
+Date:   Thu Feb 12 22:02:03 2026 -0500
+
+    feat(navbar): manejar estado con signals
+
+[33mcommit 785b54303277f4f5de0c921ad51e533ced36fab5[m
+Author: jfloresxc <jfloresxc@gmail.com>
+Date:   Thu Feb 12 18:38:06 2026 -0500
+
+    feat(resources): agregar estáticos para proyecto
+
+[33mcommit ab92e48dd8bfe4bd326b21635e9ec84d2e9710cd[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/clase-1[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mclase-1[m[33m)[m
+Author: jfloresxc <jfloresxc@gmail.com>
+Date:   Tue Feb 10 22:06:28 2026 -0500
+
+    feat(eslint-prettier): instalar formateador
+
+[33mcommit e579bdbc9f27e5166d7eb04198151f25e49709a9[m
+Author: jfloresxc <jfloresxc@gmail.com>
+Date:   Tue Feb 10 20:56:32 2026 -0500
+
+    initial commit
