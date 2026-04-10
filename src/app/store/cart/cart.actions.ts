@@ -1,5 +1,5 @@
 import { Product } from '@/app/modules/product/interfaces/product';
-import { createActionGroup, emptyProps, props } from '@ngrx/store';
+import { createAction, createActionGroup, emptyProps, props } from '@ngrx/store';
 
 export const CartActions = createActionGroup({
   source: 'Cart',
@@ -17,3 +17,5 @@ export const CartLocalStorageActions = createActionGroup({
     'Save Cart in LocalStorage': props<{ products: Product[] }>(),
   },
 });
+
+export const clearCart = createAction('[Cart] Clear Cart');
