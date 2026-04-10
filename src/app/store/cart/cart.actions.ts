@@ -14,7 +14,7 @@ export const CartActions = createActionGroup({
 export const CartLocalStorageActions = createActionGroup({
   source: 'Cart LocalStorage',
   events: {
-    'Load Cart from LocalStorage': emptyProps,
+    'Load Cart from LocalStorage': props<{ products: Product[] }>(),
     'Save Cart in LocalStorage': props<{ products: Product[] }>(),
   },
 });

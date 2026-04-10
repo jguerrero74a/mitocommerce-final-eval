@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shopping-cart-sidebar',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './shopping-cart-sidebar.html',
   styleUrl: './shopping-cart-sidebar.css',
 })

@@ -20,7 +20,9 @@ export class App {
 
   constructor() {
     afterNextRender(() => {
-      this.store.dispatch(CartLocalStorageActions.loadCartFromLocalStorage());
+      const savedCart = localStorage.getItem('cart');
+      const products = savedCart ? JSON.parse(savedCart) : [];
+      this.store.dispatch(CartLocalStorageActions.loadCartFromLocalStorage({ products }));
     });
   }
 }

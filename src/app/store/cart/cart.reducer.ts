@@ -4,41 +4,45 @@ import { CartActions, CartLocalStorageActions } from './cart.actions';
 
 export const initialState: Product[] = [];
 
-const CART_STORAGE_KEY = 'cart';
-
 export const cartReducer = createReducer(
   initialState,
 
+  // Soluciona el reordenamiento al sumar (usa .map)
   on(CartActions.addProduct, (state, { product }) => {
-    const productInCart = state.find((p) => p.id === product.id) ?? { ...product, quantity: 0 };
-    const productAdd: Product = { ...productInCart, quantity: (productInCart?.quantity ?? 0) + 1 };
-    const stateWithoutProduct = state.filter((p) => p.id !== product.id);
-    return [...stateWithoutProduct, productAdd];
+    const exists = state.find((p) => p.id === product.id);
+
+    if (exists) {
+      return state.map((item) =>
+        item.id === product.id ? { ...item, quantity: (item.quantity ?? 0) + 1 } : item,
+      );
+    }
+
+    return [...state, { ...product, quantity: 1 }];
   }),
 
+  // Soluciona el reordenamiento al restar y error TS18048
   on(CartActions.removeProduct, (state, { productId }) => {
     const productInCart = state.find((p) => p.id === productId);
+
     if (!productInCart) return state;
-    if (productInCart.quantity === 1) return state.filter((product) => product.id !== productId);
-    const productRemove: Product = {
-      ...productInCart,
-      quantity: (productInCart?.quantity ?? 0) - 1,
-    };
-    const stateWithoutProduct = state.filter((p) => p.id !== productId);
-    return [...stateWithoutProduct, productRemove];
+
+    if (productInCart.quantity === 1) {
+      return state.filter((product) => product.id !== productId);
+    }
+
+    return state.map((item) =>
+      item.id === productId ? { ...item, quantity: (item.quantity ?? 1) - 1 } : item,
+    );
   }),
 
-  on(CartActions.clearCart, () => {
-    return [];
+  on(CartActions.clearCart, () => []),
+
+  // Soluciona error TS2339 (ahora recibe el objeto products)
+  on(CartLocalStorageActions.loadCartFromLocalStorage, (state, { products }) => {
+    return products || [];
   }),
 
-  on(CartLocalStorageActions.loadCartFromLocalStorage, () => {
-    const cart = localStorage.getItem(CART_STORAGE_KEY);
-    return cart ? JSON.parse(cart) : [];
-  }),
-
-  on(CartLocalStorageActions.saveCartInLocalStorage, (_, { products }) => {
-    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(products));
+  on(CartLocalStorageActions.saveCartInLocalStorage, (state, { products }) => {
     return products;
   }),
 );
