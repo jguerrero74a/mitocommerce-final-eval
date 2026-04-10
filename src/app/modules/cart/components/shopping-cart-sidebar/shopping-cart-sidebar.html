@@ -73,10 +73,15 @@
           </table>
         </div>
 
-        <div class="cart_btn">
-          <a href="cart.html" class="cr-button">View Cart</a>
+        <div class="cart_btn flex gap-2 mt-4">
+          <a href="cart.html" class="cr-button w-1/2 text-center">View Cart</a>
 
-          <a routerLink="/checkout" class="cr-btn-secondary">Checkout</a>
+          <button
+            (click)="goToCheckout()"
+            class="cr-btn-secondary w-1/2 text-center cursor-pointer hover:opacity-90 transition-all"
+          >
+            Checkout
+          </button>
         </div>
       </div>
     </div>

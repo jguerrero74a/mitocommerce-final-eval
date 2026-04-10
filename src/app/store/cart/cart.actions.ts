@@ -7,6 +7,7 @@ export const CartActions = createActionGroup({
     'Add Product': props<{ product: Product }>(),
     'Remove Product': props<{ productId: string }>(),
     'Clear Cart': emptyProps,
+    'Toggle Sidebar': props<{ open: boolean }>(),
   },
 });
 

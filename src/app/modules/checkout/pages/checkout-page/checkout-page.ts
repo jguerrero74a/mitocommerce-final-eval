@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { CartSummary } from '../../components/cart-summary/cart-summary';
 import { CartActions } from '@/app/store/cart/cart.actions';
 import { Router } from '@angular/router';
+import { selectCartCount } from '@/app/store/cart/cart.selector';
 
 @Component({
   selector: 'app-checkout-page',
@@ -20,6 +21,8 @@ export class CheckoutPage {
   public selectedShippingCost = signal<number>(0);
   public selectedPaymentMethod = signal<string>('pago-contra-entrega');
   public showModal = signal<boolean>(false);
+  public cartCount = this.store.selectSignal(selectCartCount);
+  public showEmptyCartModal = signal<boolean>(false);
 
   constructor() {
     this.checkoutForm = this.fb.group({
@@ -40,6 +43,10 @@ export class CheckoutPage {
     this.selectedPaymentMethod.set(method);
   }
   onSubmitOrder(): void {
+    if (this.cartCount() === 0) {
+      this.showEmptyCartModal.set(true);
+      return;
+    }
     if (this.checkoutForm.valid) {
       console.log('Pedido realizado con costo de envío:', this.selectedShippingCost());
       this.store.dispatch(CartActions.clearCart());
@@ -58,5 +65,8 @@ export class CheckoutPage {
   closeModal(): void {
     this.showModal.set(false);
     this.router.navigate(['/']);
+  }
+  closeEmptyModal(): void {
+    this.showEmptyCartModal.set(false);
   }
 }
