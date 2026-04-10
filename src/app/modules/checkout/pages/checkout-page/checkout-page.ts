@@ -2,8 +2,8 @@ import { Component, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { clearCart } from '@/app/store/cart/cart.actions';
 import { CartSummary } from '../../components/cart-summary/cart-summary';
+import { CartActions } from '@/app/store/cart/cart.actions';
 
 @Component({
   selector: 'app-checkout-page',
@@ -40,7 +40,7 @@ export class CheckoutPage {
   onSubmitOrder(): void {
     if (this.checkoutForm.valid) {
       console.log('Pedido realizado con costo de envío:', this.selectedShippingCost());
-      this.store.dispatch(clearCart());
+      this.store.dispatch(CartActions.clearCart());
       this.checkoutForm.reset({
         ciudad: 'Lima',
         pais: 'Perú',
