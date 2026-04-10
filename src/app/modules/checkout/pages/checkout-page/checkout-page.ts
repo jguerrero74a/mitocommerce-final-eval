@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 import { Store } from '@ngrx/store';
 import { CartSummary } from '../../components/cart-summary/cart-summary';
 import { CartActions } from '@/app/store/cart/cart.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout-page',
@@ -14,12 +15,13 @@ import { CartActions } from '@/app/store/cart/cart.actions';
 export class CheckoutPage {
   private fb = inject(FormBuilder);
   private readonly store = inject(Store);
+  private router = inject(Router);
   public checkoutForm: FormGroup;
   public selectedShippingCost = signal<number>(0);
   public selectedPaymentMethod = signal<string>('pago-contra-entrega');
+  public showModal = signal<boolean>(false);
 
   constructor() {
-    // Implementación de validaciones según tabla requerida
     this.checkoutForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(2)]],
       apellido: ['', [Validators.required, Validators.minLength(2)]],
@@ -48,9 +50,13 @@ export class CheckoutPage {
       });
       this.selectedShippingCost.set(0);
       this.selectedPaymentMethod.set('pago-contra-entrega');
-      alert('¡Pedido realizado y carrito vaciado!');
+      this.showModal.set(true);
     } else {
       this.checkoutForm.markAllAsTouched();
     }
+  }
+  closeModal(): void {
+    this.showModal.set(false);
+    this.router.navigate(['/']);
   }
 }

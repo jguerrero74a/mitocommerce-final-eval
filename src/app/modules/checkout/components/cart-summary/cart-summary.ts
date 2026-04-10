@@ -1,7 +1,7 @@
 import { Component, inject, computed, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { selectCartProducts, selectCartTotal } from '@/app/store/cart/cart.selector';
+import { selectCartProducts, selectCartSubtotal } from '@/app/store/cart/cart.selector';
 
 @Component({
   selector: 'app-cart-summary',
@@ -13,7 +13,7 @@ export class CartSummary {
   private readonly store = inject(Store);
 
   public cartItems = this.store.selectSignal(selectCartProducts);
-  public subtotal = this.store.selectSignal(selectCartTotal);
+  public subtotal = this.store.selectSignal(selectCartSubtotal);
 
   public shippingCost = input<number>(0);
 

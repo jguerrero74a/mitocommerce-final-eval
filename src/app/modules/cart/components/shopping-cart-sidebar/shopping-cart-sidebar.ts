@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 
 import { Product } from '@/app/modules/product/interfaces/product';
 
-import { selectCartProducts, selectCartTotal } from '@/app/store/cart/cart.selector';
+import { selectCartProducts, selectCartSubtotal } from '@/app/store/cart/cart.selector';
 
 import { CartActions } from '@/app/store/cart/cart.actions';
 
@@ -28,7 +28,7 @@ export class ShoppingCartSidebar {
 
   productsInCart = this.store.selectSignal(selectCartProducts);
 
-  totalProducts = this.store.selectSignal(selectCartTotal);
+  totalProducts = this.store.selectSignal(selectCartSubtotal);
 
   addQuantity(product: Product) {
     this.store.dispatch(CartActions.addProduct({ product }));
